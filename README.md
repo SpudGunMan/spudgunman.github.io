@@ -15,6 +15,3 @@ Personal landing site for **SpudGunMan**, hosted on GitHub Pages and used as a r
 ## Notes
 
 - The projects list fetches from `https://api.github.com/users/SpudGunMan/repos`.
-- This is fully static and works with GitHub Pages.
-- To add a downloadable resume, place a `resume.pdf` file at the repository root and link to it from navigation.
-- Update the email placeholder in `contact.html` to your preferred address.
