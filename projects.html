@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Kelly Keeton</title>
+    <meta
+      name="description"
+      content="Live project list for Kelly Keeton, pulled from GitHub repositories."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Go to homepage">
+          <span class="brand-badge">KK</span>
+          <span>Kelly Keeton</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="projects.html">Projects</a>
+          <a href="about.html">About/Resume</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero reveal" data-delay="1">
+          <span class="kicker">Github activity feed</span>
+          <h1>Projects and Experiments</h1>
+          <p>
+            Repositories are loaded directly from <strong>@SpudGunMan</strong>, sorted by most recently updated.
+            This keeps the page current without manual edits.
+          </p>
+          <div class="project-controls">
+            <p id="project-status" class="muted">Waiting to load repositories...</p>
+            <label class="switch" for="include-forks">
+              <input id="include-forks" type="checkbox" />
+              Include forked repositories
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <div id="projects-container" class="card-grid" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Copyright <span id="year"></span> Kelly Keeton. Built to run on GitHub Pages.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/projects.js" defer></script>
+  </body>
+</html>

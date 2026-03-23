@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About and Resume | Kelly Keeton</title>
+    <meta
+      name="description"
+      content="Background, strengths, and resume highlights for Kelly Keeton."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Go to homepage">
+          <span class="brand-badge">KK</span>
+          <span>Kelly Keeton</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" href="about.html">About/Resume</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero reveal" data-delay="1">
+          <span class="kicker">About me</span>
+          <h1>Builder mindset, practical execution.</h1>
+          <p>
+            I like solving real-world technical problems, turning rough ideas into useful tools, and iterating quickly.
+            My work usually sits at the intersection of software, systems, and rapid prototyping.
+          </p>
+        </section>
+
+        <section class="section reveal" data-delay="2">
+          <h2>Resume Highlights</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Core Strengths</h3>
+              <ul class="resume-list">
+                <li>Building and shipping production-ready software</li>
+                <li>Automation, integration, and developer tooling</li>
+                <li>Debugging and improving complex systems</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Preferred Work Style</h3>
+              <ul class="resume-list">
+                <li>Small feedback loops and continuous delivery</li>
+                <li>Clear technical tradeoff decisions</li>
+                <li>Documentation that makes handoffs easy</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Current Focus</h3>
+              <ul class="resume-list">
+                <li>Maintaining active open-source projects</li>
+                <li>Experimenting with AI-assisted workflows</li>
+                <li>Building tools that remove repetitive work</li>
+              </ul>
+            </article>
+          </div>
+          <p>
+            Want a full resume PDF here? Add your file as <strong>resume.pdf</strong> in the repo root,
+            then add a nav button linking to it.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Copyright <span id="year"></span> Kelly Keeton. Built to run on GitHub Pages.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>
