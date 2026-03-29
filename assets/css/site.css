@@ -319,6 +319,50 @@ a {
   color: var(--muted);
 }
 
+.muted {
+  color: var(--muted);
+}
+
+.error-box {
+  border: 1px solid var(--stroke);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--muted);
+}
+
+.filter-bar {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.filter-chip {
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--accent-3);
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: 170ms ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.filter-chip.active {
+  border-color: var(--accent);
+  background: rgba(15, 123, 108, 0.14);
+  color: var(--text);
+  font-weight: 700;
+}
+
 .switch input {
   width: 1rem;
   height: 1rem;

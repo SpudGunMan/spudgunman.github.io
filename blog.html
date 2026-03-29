@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects | Kelly Keeton</title>
+    <title>Blog | Kelly Keeton</title>
     <meta
       name="description"
-      content="Live project list for Kelly Keeton, pulled from GitHub repositories."
+      content="Story list for Kelly Keeton, loaded from the blog folder with subject filtering."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,8 +26,8 @@
 
         <nav class="main-nav" aria-label="Primary navigation">
           <a href="index.html">Home</a>
-          <a class="active" href="projects.html">Projects</a>
-          <a href="blog.html">Blog</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" href="blog.html">Blog</a>
           <a href="about.html">About/Resume</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -35,23 +35,20 @@
 
       <main>
         <section class="hero reveal" data-delay="1">
-          <span class="kicker">Github activity feed</span>
-          <h1>Projects and Experiments</h1>
+          <span class="kicker">Story feed</span>
+          <h1>Blog Stories and Notes</h1>
           <p>
-            Repositories are loaded directly from <strong>@SpudGunMan</strong>, sorted by most recently updated.
-            This keeps the page current without manual edits.
+            Posts are loaded from the local <strong>blog/</strong> folder, using lightweight front matter for metadata.
+            Use subjects to filter stories by topic.
           </p>
           <div class="project-controls">
-            <p id="project-status" class="muted">Waiting to load repositories...</p>
-            <label class="switch" for="include-forks">
-              <input id="include-forks" type="checkbox" />
-              Include forked repositories
-            </label>
+            <p id="blog-status" class="muted">Waiting to load stories...</p>
           </div>
+          <div id="subject-filters" class="filter-bar" aria-label="Filter stories by subject"></div>
         </section>
 
         <section class="section">
-          <div id="projects-container" class="card-grid" aria-live="polite"></div>
+          <div id="blog-container" class="card-grid" aria-live="polite"></div>
         </section>
       </main>
 
@@ -60,6 +57,6 @@
       </footer>
     </div>
 
-    <script src="assets/js/projects.js" defer></script>
+    <script src="assets/js/blog.js" defer></script>
   </body>
 </html>
