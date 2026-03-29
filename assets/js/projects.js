@@ -3,6 +3,7 @@ const projectsContainer = document.getElementById("projects-container");
 const projectStatus = document.getElementById("project-status");
 const forksToggle = document.getElementById("include-forks");
 const footerYear = document.getElementById("year");
+let cachedRepos = [];
 
 if (footerYear) {
   footerYear.textContent = new Date().getFullYear();
@@ -43,16 +44,27 @@ const renderProjects = (repos, includeForks) => {
   const filtered = repos
     .filter((repo) => includeForks || !repo.fork)
     .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+  const mode = includeForks ? "including forks" : "excluding forks";
 
   if (filtered.length === 0) {
     projectsContainer.innerHTML = "<p class=\"muted\">No repositories match the current filter.</p>";
-    projectStatus.textContent = "0 repositories displayed";
+    projectStatus.textContent = `0 repositories displayed (${mode})`;
     return;
   }
 
   projectsContainer.innerHTML = filtered.map(cardMarkup).join("");
-  projectStatus.textContent = `${filtered.length} repositories displayed`;
+  projectStatus.textContent = `${filtered.length} repositories displayed (${mode})`;
 };
+
+const updateProjectList = () => {
+  const includeForks = forksToggle ? forksToggle.checked : false;
+  renderProjects(cachedRepos, includeForks);
+};
+
+if (forksToggle) {
+  forksToggle.addEventListener("input", updateProjectList);
+  forksToggle.addEventListener("change", updateProjectList);
+}
 
 const loadAllRepositories = async () => {
   const allRepos = [];
@@ -85,15 +97,8 @@ const loadProjects = async () => {
   projectStatus.textContent = "Loading repositories from GitHub...";
 
   try {
-    const repos = await loadAllRepositories();
-    const includeForks = forksToggle ? forksToggle.checked : false;
-    renderProjects(repos, includeForks);
-
-    if (forksToggle) {
-      forksToggle.addEventListener("change", () => {
-        renderProjects(repos, forksToggle.checked);
-      });
-    }
+    cachedRepos = await loadAllRepositories();
+    updateProjectList();
   } catch (error) {
     projectsContainer.innerHTML = `
       <div class="error-box">

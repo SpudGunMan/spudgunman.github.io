@@ -25,6 +25,20 @@ const titleFromFileName = (name) =>
     .replace(/[-_]+/g, " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
+const safePath = (path) =>
+  path
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+
+const publishedStoryPath = (filePath) => {
+  if (/\.(md|markdown|txt)$/i.test(filePath)) {
+    return filePath.replace(/\.(md|markdown|txt)$/i, ".html");
+  }
+
+  return filePath;
+};
+
 const formatDate = (value) => {
   if (!value) {
     return "No date";
@@ -94,7 +108,7 @@ const parseFrontMatter = (content, fileName, filePath) => {
     date: meta.date || "",
     subjects,
     summary: meta.summary || bodyToSummary(body),
-    filePath
+    filePath: publishedStoryPath(filePath)
   };
 };
 
@@ -110,7 +124,7 @@ const cardMarkup = (post) => {
         ${subjectTags}
       </div>
       <div class="cta-row">
-        <a class="button secondary" href="${encodeURI(post.filePath)}">Read Story</a>
+        <a class="button secondary" href="${safePath(post.filePath)}">Read Story</a>
       </div>
     </article>
   `;
