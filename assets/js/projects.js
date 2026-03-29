@@ -5,6 +5,8 @@ const forksToggle = document.getElementById("include-forks");
 const footerYear = document.getElementById("year");
 let cachedRepos = [];
 
+const ignoredRepoNames = new Set(["spudgunman.github.io"]);
+
 if (footerYear) {
   footerYear.textContent = new Date().getFullYear();
 }
@@ -42,6 +44,7 @@ const cardMarkup = (repo) => {
 
 const renderProjects = (repos, includeForks) => {
   const filtered = repos
+    .filter((repo) => !ignoredRepoNames.has((repo.name || "").toLowerCase()))
     .filter((repo) => includeForks || !repo.fork)
     .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
   const mode = includeForks ? "including forks" : "excluding forks";
