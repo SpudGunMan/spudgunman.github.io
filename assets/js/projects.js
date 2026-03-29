@@ -54,22 +54,46 @@ const renderProjects = (repos, includeForks) => {
   projectStatus.textContent = `${filtered.length} repositories displayed`;
 };
 
-const loadProjects = async () => {
-  projectStatus.textContent = "Loading repositories from GitHub...";
+const loadAllRepositories = async () => {
+  const allRepos = [];
+  let page = 1;
 
-  try {
-    const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+  // GitHub caps at 100 items per page, so page until we get a short page.
+  while (true) {
+    const response = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=100&page=${page}`
+    );
 
     if (!response.ok) {
       throw new Error(`GitHub API responded with status ${response.status}`);
     }
 
     const repos = await response.json();
-    renderProjects(repos, forksToggle.checked);
+    allRepos.push(...repos);
 
-    forksToggle.addEventListener("change", () => {
-      renderProjects(repos, forksToggle.checked);
-    });
+    if (repos.length < 100) {
+      break;
+    }
+
+    page += 1;
+  }
+
+  return allRepos;
+};
+
+const loadProjects = async () => {
+  projectStatus.textContent = "Loading repositories from GitHub...";
+
+  try {
+    const repos = await loadAllRepositories();
+    const includeForks = forksToggle ? forksToggle.checked : false;
+    renderProjects(repos, includeForks);
+
+    if (forksToggle) {
+      forksToggle.addEventListener("change", () => {
+        renderProjects(repos, forksToggle.checked);
+      });
+    }
   } catch (error) {
     projectsContainer.innerHTML = `
       <div class="error-box">
