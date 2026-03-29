@@ -118,6 +118,12 @@ a {
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(15, 123, 108, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .kicker {
